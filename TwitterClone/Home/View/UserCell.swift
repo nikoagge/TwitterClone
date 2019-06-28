@@ -25,8 +25,9 @@ class UserCell: DatasourceCell {
     let nameLabel: UILabel = {
         
         let nl = UILabel()
-        nl.text = "Test"
+        nl.text = "Brian"
         nl.backgroundColor = .green
+        nl.font = UIFont.boldSystemFont(ofSize: 16)
         
         return nl
     }()
@@ -35,6 +36,9 @@ class UserCell: DatasourceCell {
         
         let piv = UIImageView()
         piv.backgroundColor = .red
+        piv.image = #imageLiteral(resourceName: "profile_image")
+        piv.layer.cornerRadius = 5
+        piv.clipsToBounds = true
         
         return piv
     }()
@@ -42,8 +46,9 @@ class UserCell: DatasourceCell {
     let userNameLabel: UILabel = {
         
         let unl = UILabel()
-        unl.text = "username"
-        unl.backgroundColor = .purple
+        unl.text = "@brianapps"
+        unl.font = UIFont.boldSystemFont(ofSize: 14)
+        unl.textColor = UIColor(r: 130, g: 130, b: 130)
         
         return unl
     }()
@@ -51,7 +56,9 @@ class UserCell: DatasourceCell {
     let bioTextView: UITextView = {
         
         let btv = UITextView()
-        btv.backgroundColor = .yellow
+        btv.text = "iPhone, iPad and iOS community. Come with us to learn how to build iOS apps."
+        btv.font = UIFont.boldSystemFont(ofSize: 15)
+        btv.backgroundColor = .clear
         
         return btv
     }()
@@ -59,7 +66,15 @@ class UserCell: DatasourceCell {
     let followButton: UIButton = {
         
         let fb = UIButton()
-        fb.backgroundColor = .cyan
+        fb.layer.cornerRadius = 5
+        fb.layer.borderColor = UIColor(r: 61, g: 167, b: 244).cgColor
+        fb.layer.borderWidth = 1
+        fb.setTitle("Follow", for: .normal)
+        fb.setTitleColor(UIColor(r: 61, g: 167, b: 244), for: .normal)
+        fb.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        fb.setImage(#imageLiteral(resourceName: "follow"), for: .normal)
+        fb.imageView?.contentMode = .scaleAspectFit
+        fb.imageEdgeInsets = UIEdgeInsets(top: 0, left: -8, bottom: 0, right: 0)
         
         return fb
     }()
@@ -77,8 +92,8 @@ class UserCell: DatasourceCell {
         
         profileImageView.anchor(self.topAnchor, left: self.leftAnchor, bottom: nil, right: nil, topConstant: 12, leftConstant: 12, bottomConstant: 0, rightConstant: 0, widthConstant: 50, heightConstant: 50)
         nameLabel.anchor(profileImageView.topAnchor, left: profileImageView.rightAnchor, bottom: nil, right: followButton.leftAnchor, topConstant: 0, leftConstant: 8, bottomConstant: 0, rightConstant: 12, widthConstant: 0, heightConstant: 20)
-        userNameLabel.anchor(nameLabel.bottomAnchor, left: nameLabel.leftAnchor, bottom: nil, right: nameLabel.rightAnchor, topConstant: 8, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 20)
-        bioTextView.anchor(userNameLabel.bottomAnchor, left: userNameLabel.leftAnchor, bottom: self.bottomAnchor, right: self.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
+        userNameLabel.anchor(nameLabel.bottomAnchor, left: nameLabel.leftAnchor, bottom: nil, right: nameLabel.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 20)
+        bioTextView.anchor(userNameLabel.bottomAnchor, left: userNameLabel.leftAnchor, bottom: self.bottomAnchor, right: self.rightAnchor, topConstant: -4, leftConstant: -4, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
         followButton.anchor(self.topAnchor, left: nil, bottom: nil, right: self.rightAnchor, topConstant: 12, leftConstant: 0, bottomConstant: 0, rightConstant: 12, widthConstant: 120, heightConstant: 34)
     }
 }

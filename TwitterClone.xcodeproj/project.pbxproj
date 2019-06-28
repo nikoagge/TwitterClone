@@ -81,12 +81,12 @@
 			isa = PBXGroup;
 			children = (
 				17FF2B9F22C4FDB1008276A9 /* Home */,
-				17FF2B9A22C4FC2C008276A9 /* TwitterClone */,
+				17FF2B9A22C4FC2C008276A9 /* Global */,
 			);
 			path = TwitterClone;
 			sourceTree = "<group>";
 		};
-		17FF2B9A22C4FC2C008276A9 /* TwitterClone */ = {
+		17FF2B9A22C4FC2C008276A9 /* Global */ = {
 			isa = PBXGroup;
 			children = (
 				17FF2B9E22C4FD8B008276A9 /* Model */,
@@ -94,7 +94,7 @@
 				17FF2B9C22C4FD82008276A9 /* Controller */,
 				17FF2B9B22C4FD79008276A9 /* Service */,
 			);
-			path = TwitterClone;
+			path = Global;
 			sourceTree = "<group>";
 		};
 		17FF2B9B22C4FD79008276A9 /* Service */ = {
@@ -450,7 +450,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7X48R5E6LJ;
-				INFOPLIST_FILE = "$(SRCROOT)/TwitterClone/TwitterClone/Service/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/TwitterClone/Global/Service/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -469,7 +469,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7X48R5E6LJ;
-				INFOPLIST_FILE = "$(SRCROOT)/TwitterClone/TwitterClone/Service/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/TwitterClone/Global/Service/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
