@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		09D6ED85184FE4FFD9BA112E /* Pods_TwitterClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9B0B6E3C13222DF80426718 /* Pods_TwitterClone.framework */; };
 		1700F46022C7AA3600CEE0DA /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1700F45F22C7AA3600CEE0DA /* TweetCell.swift */; };
+		1700F46222C7B58F00CEE0DA /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1700F46122C7B58F00CEE0DA /* Tweet.swift */; };
 		17102C0322C5DEC700A2AE86 /* HomeDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17102C0222C5DEC700A2AE86 /* HomeDatasource.swift */; };
 		17102C0522C5E01A00A2AE86 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17102C0422C5E01A00A2AE86 /* UserCell.swift */; };
 		17102C0722C5E1EA00A2AE86 /* UserHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17102C0622C5E1EA00A2AE86 /* UserHeader.swift */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		1700F45F22C7AA3600CEE0DA /* TweetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
+		1700F46122C7B58F00CEE0DA /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		17102C0222C5DEC700A2AE86 /* HomeDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDatasource.swift; sourceTree = "<group>"; };
 		17102C0422C5E01A00A2AE86 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		17102C0622C5E1EA00A2AE86 /* UserHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHeader.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				17A1103422C68E7D00EB63CC /* User.swift */,
+				1700F46122C7B58F00CEE0DA /* Tweet.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				1700F46022C7AA3600CEE0DA /* TweetCell.swift in Sources */,
 				17FF2B8922C4FB5C008276A9 /* AppDelegate.swift in Sources */,
 				17102C0722C5E1EA00A2AE86 /* UserHeader.swift in Sources */,
+				1700F46222C7B58F00CEE0DA /* Tweet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
