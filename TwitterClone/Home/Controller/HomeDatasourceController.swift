@@ -19,6 +19,7 @@ class HomeDatasourceController: DatasourceController {
         super.viewDidLoad()
         
         setupHomeDatasource()
+        setupNavigationBarItems()
     }
     
     
@@ -26,6 +27,37 @@ class HomeDatasourceController: DatasourceController {
         
         let homeDatasource = HomeDatasource()
         self.datasource = homeDatasource
+    }
+    
+    
+    private func setupNavigationBarItems() {
+        
+        let titleImageView = UIImageView(image: #imageLiteral(resourceName: "title_icon"))
+        titleImageView.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
+        titleImageView.contentMode = .scaleAspectFit
+        
+        navigationItem.titleView = titleImageView
+        
+        let followButton = UIButton(type: .system)
+        followButton.setImage(#imageLiteral(resourceName: "follow").withRenderingMode(.alwaysOriginal), for: .normal)
+        followButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
+        
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: followButton)
+        
+        let searchButton = UIButton(type: .system)
+        searchButton.setImage(#imageLiteral(resourceName: "search").withRenderingMode(.alwaysOriginal), for: .normal)
+        searchButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
+        
+        let composeButton = UIButton(type: .system)
+        composeButton.setImage(#imageLiteral(resourceName: "compose").withRenderingMode(.alwaysOriginal), for: .normal)
+        composeButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
+        
+        //First bar button start from the right edge.
+        navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: composeButton), UIBarButtonItem(customView: searchButton)]
+        
+        navigationController?.navigationBar.backgroundColor = .white
+        navigationController?.navigationBar.isTranslucent = false
     }
     
     
