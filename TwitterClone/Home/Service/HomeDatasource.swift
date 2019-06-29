@@ -14,18 +14,26 @@ import LBTAComponents
 class HomeDatasource: Datasource {
     
     
-    let words = ["user1", "user2", "user3", "user4"]
+    //let words = ["user1", "user2", "user3", "user4"]
+    
+    let users: [User] = {
+        
+        let brianUser = User(name: "Brian", username: "@brianaccount", bioText: "A simple bio text for user Brian.", profileImage: #imageLiteral(resourceName: "profile_image"))
+        let rayUser = User(name: "Ray", username: "@rayaccount", bioText: "A simple bio text for user Ray.", profileImage: #imageLiteral(resourceName: "ray_profile_image"))
+        
+        return [brianUser, rayUser]
+    }()
     
     
     override func numberOfItems(_ section: Int) -> Int {
         
-        return words.count
+        return users.count
     }
     
     
     override func item(_ indexPath: IndexPath) -> Any? {
         
-        return words[indexPath.item]
+        return users[indexPath.item]
     }
     
     
