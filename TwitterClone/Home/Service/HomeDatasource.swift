@@ -20,6 +20,7 @@ class HomeDatasource: Datasource {
         
         let brianUser = User(name: "Brian", username: "@brianaccount", bioText: "A simple bio text for user Brian.", profileImage: #imageLiteral(resourceName: "profile_image"))
         let rayUser = User(name: "Ray", username: "@rayaccount", bioText: "A simple bio text for user Ray.", profileImage: #imageLiteral(resourceName: "ray_profile_image"))
+        let kindleCourseUser = User(name: "Kindle Course", username: "@kindleCourse", bioText: "Recently released course. Provides some excellent guidance on how to use UITableView and UICollectionView. This course also teaches some basics on Swift language, for example if statements and for loops. An excellent purchase for you.", profileImage: #imageLiteral(resourceName: "kindle_logo"))
         
         return [brianUser, rayUser]
     }()
