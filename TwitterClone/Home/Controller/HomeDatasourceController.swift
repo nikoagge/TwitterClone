@@ -119,6 +119,20 @@ class HomeDatasourceController: DatasourceController {
     }
     
     
+    func estimatedHeight(forText text: String) -> CGFloat {
+        
+        let approximateWidthOfBioTextView = view.frame.width - 12 - 50 - 12 - 2
+        
+        let size = CGSize(width: approximateWidthOfBioTextView, height: 1000)
+        
+        let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15)]
+        
+        let estimatedFrame = NSString(string: text).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
+        
+        return estimatedFrame.height
+    }
+    
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         
         if section == 1 {
@@ -143,20 +157,33 @@ class HomeDatasourceController: DatasourceController {
     
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        //12 is the padding of the profileImageView and the view-screen, 50 is the actual width of profileImageView. Lastly we must also give a little more padding thus second - 12.
-        let approximateWidthOfBioTextView = view.frame.width - 12 - 50 - 12 - 2
-        
-        let size = CGSize(width: approximateWidthOfBioTextView, height: 1000)
-        
-        //Because in bioTextView declaration set fontSize of 15, I write following line:
-        let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15)]
-        
-        if let user = self.datasource?.item(indexPath) as? User {
+        if indexPath.section == 0 {
+            
+            
+            guard let user = self.datasource?.item(indexPath) as? User else { return .zero }
             
             //Get an estimation of the height of the cell based on user.bioText
-            let estimatedFrame = NSString(string: user.bioText).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
+            let estimatedHeightValue = estimatedHeight(forText: user.bioText)
             
-            return CGSize(width: view.frame.width, height: estimatedFrame.height + 66)
+            return CGSize(width: view.frame.width, height: estimatedHeightValue + 66)
+            //12 is the padding of the profileImageView and the view-screen, 50 is the actual width of profileImageView. Lastly we must also give a little more padding thus second - 12.
+//            let approximateWidthOfBioTextView = view.frame.width - 12 - 50 - 12 - 2
+//
+//            let size = CGSize(width: approximateWidthOfBioTextView, height: 1000)
+//
+//            //Because in bioTextView declaration set fontSize of 15, I write following line:
+//            let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15)]
+                
+            
+        } else if indexPath.section == 1 {
+            
+            //Size estimation for tweets.
+        
+            guard let tweet = datasource?.item(indexPath) as? Tweet else { return .zero }
+            
+            let estimatedHeightValue = estimatedHeight(forText: tweet.message)
+            
+            return CGSize(width: view.frame.width, height: estimatedHeightValue + 74)
         }
         
         return CGSize(width: view.frame.width, height: 200)
