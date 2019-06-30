@@ -21,7 +21,7 @@ struct NetworkService {
     static let sharedInstance = NetworkService()
     
     
-    func fetchHomeFeed(withCompletion completion: @escaping (HomeDatasource) -> ()) {
+    func fetchHomeFeed(withCompletion completion: @escaping (HomeDatasource?, Error?) -> ()) {
         
         //Start JSON fetch.
         let request: APIRequest<HomeDatasource, JSONError> = tronBaseURL.swiftyJSON.request("/twitter/home")
@@ -29,10 +29,11 @@ struct NetworkService {
         request.perform(withSuccess: { (homeDatasource) in
             
             //self.datasource = homeDatasource
-            completion(homeDatasource)
+            completion(homeDatasource, nil)
         }) { (error) in
             
             print("Failed to fetch JSON: ", error)
+            completion(nil, error)
         }
     }
 }
