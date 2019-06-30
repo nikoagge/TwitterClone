@@ -14,9 +14,6 @@ import SwiftyJSON
 
 
 class HomeDatasourceController: DatasourceController {
-
-    
-    let tronBaseURL = TRON(baseURL: "https://api.letsbuildthatapp.com")
     
     
     override func viewDidLoad() {
@@ -24,7 +21,10 @@ class HomeDatasourceController: DatasourceController {
         super.viewDidLoad()
         
         //setupHomeDatasource()
-        fetchHomeFeed()
+        NetworkService.sharedInstance.fetchHomeFeed { (homeDatasource) in
+            
+            self.datasource = homeDatasource
+        }
         setupNavigationBarItems()
         setupCollectionView()
     }
@@ -33,21 +33,6 @@ class HomeDatasourceController: DatasourceController {
 //        let homeDatasource = HomeDatasource()
 //        self.datasource = homeDatasource
 //    }
-    
-    
-    fileprivate func fetchHomeFeed() {
-        
-        //Start JSON fetch.
-        let request: APIRequest<HomeDatasource, JSONError> = tronBaseURL.swiftyJSON.request("/twitter/home")
-        
-        request.perform(withSuccess: { (homeDatasource) in
-            
-            self.datasource = homeDatasource
-        }) { (error) in
-            
-            print("Failed to fetch JSON: ", error)
-        }
-    }
     
     
     private func setupNavigationBarItems() {
