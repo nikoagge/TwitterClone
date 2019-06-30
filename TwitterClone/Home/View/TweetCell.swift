@@ -129,6 +129,8 @@ class TweetCell: DatasourceCell {
         buttonsStackView.axis = .horizontal
         buttonsStackView.distribution = .fillEqually
         
+        addSubview(buttonsStackView)
+        
         buttonsStackView.anchor(nil, left: messageTextView.leftAnchor, bottom: self.bottomAnchor, right: self.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 4, rightConstant: 0, widthConstant: 0, heightConstant: 20)
         
         addSubview(replyButton)
