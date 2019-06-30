@@ -10,9 +10,10 @@
 import Foundation
 import UIKit
 import SwiftyJSON
+import TRON
 
 
-struct User {
+struct User: JSONDecodable {
     
     
     let name: String
@@ -21,7 +22,7 @@ struct User {
     let profileImageURL: String
     
     
-    init(withJSON json: JSON) {
+    init(json: JSON) {
         
         self.name = json["name"].stringValue
         self.username = json["username"].stringValue
