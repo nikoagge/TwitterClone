@@ -20,6 +20,8 @@ class TweetCell: DatasourceCell {
             
             guard let tweet = datasourceItem as? Tweet else { return }
             
+            profileImageView.loadImage(urlString: tweet.user.profileImageURL)
+            
             let attributedText = NSMutableAttributedString(string: tweet.user.name, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 16)])
             
             let userNameString = "  \(tweet.user.username)"
@@ -36,9 +38,9 @@ class TweetCell: DatasourceCell {
         }
     }
     
-    let profileImageView: UIImageView = {
+    let profileImageView: CachedImageView = {
         
-        let piv = UIImageView()
+        let piv = CachedImageView()
         piv.backgroundColor = .red
         piv.image = #imageLiteral(resourceName: "profile_image")
         piv.layer.cornerRadius = 5
@@ -100,7 +102,7 @@ class TweetCell: DatasourceCell {
         addSubview(messageTextView)
         
         profileImageView.anchor(self.topAnchor, left: self.leftAnchor, bottom: nil, right: nil, topConstant: 12, leftConstant: 12, bottomConstant: 0, rightConstant: 0, widthConstant: 50, heightConstant: 50)
-        messageTextView.anchor(self.topAnchor, left: profileImageView.rightAnchor, bottom: self.bottomAnchor, right: self.rightAnchor, topConstant: 4, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
+        messageTextView.anchor(topAnchor, left: profileImageView.rightAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 4, leftConstant: 4, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
 
         setupBottomButtons()
     }
@@ -126,6 +128,8 @@ class TweetCell: DatasourceCell {
         let buttonsStackView = UIStackView(arrangedSubviews: [replyButtonContainerView, retweetButtonContainerView, likeButtonContainerView, directMessageButtonContainerView])
         buttonsStackView.axis = .horizontal
         buttonsStackView.distribution = .fillEqually
+        
+        addSubview(buttonsStackView)
         
         buttonsStackView.anchor(nil, left: messageTextView.leftAnchor, bottom: self.bottomAnchor, right: self.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 4, rightConstant: 0, widthConstant: 0, heightConstant: 20)
         

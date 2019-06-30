@@ -9,32 +9,53 @@
 
 import Foundation
 import LBTAComponents
+import TRON
+import SwiftyJSON
 
 
-class HomeDatasource: Datasource {
+class HomeDatasource: Datasource, JSONDecodable {
     
     
     //let words = ["user1", "user2", "user3", "user4"]
     
-    let users: [User] = {
-        
-        let brianUser = User(name: "Brian", username: "@brianaccount", bioText: "A simple bio text for user Brian.", profileImage: #imageLiteral(resourceName: "profile_image"))
-        let rayUser = User(name: "Ray", username: "@rayaccount", bioText: "A simple bio text for user Ray.", profileImage: #imageLiteral(resourceName: "ray_profile_image"))
-        let kindleCourseUser = User(name: "Kindle Course", username: "@kindleCourse", bioText: "Recently released course. Provides some excellent guidance on how to use UITableView and UICollectionView. This course also teaches some basics on Swift language, for example if statements and for loops. An excellent purchase for you.", profileImage: #imageLiteral(resourceName: "kindle_logo"))
-        
-        return [brianUser, rayUser]
-    }()
+//    let users: [User] = {
+//
+//        let brianUser = User(name: "Brian", username: "@brianaccount", bioText: "A simple bio text for user Brian.", profileImage: #imageLiteral(resourceName: "profile_image"))
+//        let rayUser = User(name: "Ray", username: "@rayaccount", bioText: "A simple bio text for user Ray.", profileImage: #imageLiteral(resourceName: "ray_profile_image"))
+//        let kindleCourseUser = User(name: "Kindle Course", username: "@kindleCourse", bioText: "Recently released course. Provides some excellent guidance on how to use UITableView and UICollectionView. This course also teaches some basics on Swift language, for example if statements and for loops. An excellent purchase for you.", profileImage: #imageLiteral(resourceName: "kindle_logo"))
+//
+//        return [brianUser, rayUser]
+//    }()
+    var users: [User]
+    var tweets: [Tweet]
     
-    let tweets: [Tweet] = {
+    
+    required init(json: JSON) throws {
         
-        let brianUser = User(name: "Brian", username: "@brianaccount", bioText: "A simple bio text for user Brian.", profileImage: #imageLiteral(resourceName: "profile_image"))
+        print("Now ready to parse JSON: \n", json)
         
-        let brianTweet = Tweet(user: brianUser, message: "Welcome to my account. Here you can find tutorials, useful advice about iOS programming and many more. Feel free to ask me anything you want!")
-        let anotherBrianTweet = Tweet(user: brianUser, message: "Here is another tweet of me, Brian. Happy to here from you really soon...")
+        //var users = [User]()
         
+        guard let usersJSONArray = json["users"].array, let tweetsJSONArray = json["tweets"].array else { throw NSError(domain: "com.letsbuildthatapp", code: 1, userInfo: [NSLocalizedDescriptionKey: "Parsing JSON was not valid."])}
         
-        return [brianTweet, anotherBrianTweet]
-    }()
+        self.users = usersJSONArray.map{return User(json: $0)}
+        
+        self.tweets = tweetsJSONArray.map{return Tweet(json: $0)}
+        
+        self.users = try usersJSONArray.decode()
+        self.tweets = try tweetsJSONArray.decode()
+    }
+//
+//    let tweets: [Tweet] = {
+//
+//        let brianUser = User(name: "Brian", username: "@brianaccount", bioText: "A simple bio text for user Brian.", profileImage: #imageLiteral(resourceName: "profile_image"))
+//
+//        let brianTweet = Tweet(user: brianUser, message: "Welcome to my account. Here you can find tutorials, useful advice about iOS programming and many more. Feel free to ask me anything you want!")
+//        let anotherBrianTweet = Tweet(user: brianUser, message: "Here is another tweet of me, Brian. Happy to here from you really soon...")
+//
+//
+//        return [brianTweet, anotherBrianTweet]
+//    }()
     
     
     override func numberOfSections() -> Int {
