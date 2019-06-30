@@ -9,25 +9,44 @@
 
 import Foundation
 import LBTAComponents
+import TRON
+import SwiftyJSON
 
 
 class HomeDatasourceController: DatasourceController {
+
+    
+    let tronBaseURL = TRON(baseURL: "https://api.letsbuildthatapp.com")
     
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
-        setupHomeDatasource()
+        //setupHomeDatasource()
+        fetchHomeFeed()
         setupNavigationBarItems()
         setupCollectionView()
     }
+//    func setupHomeDatasource() {
+//
+//        let homeDatasource = HomeDatasource()
+//        self.datasource = homeDatasource
+//    }
     
     
-    func setupHomeDatasource() {
+    fileprivate func fetchHomeFeed() {
         
-        let homeDatasource = HomeDatasource()
-        self.datasource = homeDatasource
+        //Start JSON fetch.
+        let request: APIRequest<HomeDatasource, JSONError> = tronBaseURL.swiftyJSON.request("/twitter/home")
+        
+        request.perform(withSuccess: { (homeDatasource) in
+            
+            self.datasource = homeDatasource
+        }) { (error) in
+            
+            print("Failed to fetch JSON: ", error)
+        }
     }
     
     

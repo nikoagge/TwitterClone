@@ -9,21 +9,47 @@
 
 import Foundation
 import LBTAComponents
+import TRON
+import SwiftyJSON
 
 
-class HomeDatasource: Datasource {
+class HomeDatasource: Datasource, JSONDecodable {
     
     
     //let words = ["user1", "user2", "user3", "user4"]
     
-    let users: [User] = {
+//    let users: [User] = {
+//
+//        let brianUser = User(name: "Brian", username: "@brianaccount", bioText: "A simple bio text for user Brian.", profileImage: #imageLiteral(resourceName: "profile_image"))
+//        let rayUser = User(name: "Ray", username: "@rayaccount", bioText: "A simple bio text for user Ray.", profileImage: #imageLiteral(resourceName: "ray_profile_image"))
+//        let kindleCourseUser = User(name: "Kindle Course", username: "@kindleCourse", bioText: "Recently released course. Provides some excellent guidance on how to use UITableView and UICollectionView. This course also teaches some basics on Swift language, for example if statements and for loops. An excellent purchase for you.", profileImage: #imageLiteral(resourceName: "kindle_logo"))
+//
+//        return [brianUser, rayUser]
+//    }()
+    let users: [User]
+    
+    
+    required init(json: JSON) throws {
         
-        let brianUser = User(name: "Brian", username: "@brianaccount", bioText: "A simple bio text for user Brian.", profileImage: #imageLiteral(resourceName: "profile_image"))
-        let rayUser = User(name: "Ray", username: "@rayaccount", bioText: "A simple bio text for user Ray.", profileImage: #imageLiteral(resourceName: "ray_profile_image"))
-        let kindleCourseUser = User(name: "Kindle Course", username: "@kindleCourse", bioText: "Recently released course. Provides some excellent guidance on how to use UITableView and UICollectionView. This course also teaches some basics on Swift language, for example if statements and for loops. An excellent purchase for you.", profileImage: #imageLiteral(resourceName: "kindle_logo"))
+        print("Now ready to parse JSON: \n", json)
         
-        return [brianUser, rayUser]
-    }()
+        var users = [User]()
+        
+        let array = json["users"].array
+        
+        for userJSON in array! {
+            
+            let name = userJSON["name"].stringValue
+            let username = userJSON["username"].stringValue
+            let bio = userJSON["bio"].stringValue
+            
+            let user = User(name: name, username: username, bioText: bio, profileImage: UIImage())
+            
+            users.append(user)
+        }
+        
+        self.users = users
+    }
     
     let tweets: [Tweet] = {
         

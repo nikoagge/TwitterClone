@@ -17,6 +17,8 @@
 		1780399422C5780E0096DCA6 /* HomeDatasourceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1780399322C5780E0096DCA6 /* HomeDatasourceController.swift */; };
 		17A1103522C68E7D00EB63CC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A1103422C68E7D00EB63CC /* User.swift */; };
 		17A2FF4922C56903008D8A9F /* WordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A2FF4822C56903008D8A9F /* WordCell.swift */; };
+		17EA0DDB22C7E64E0008EB04 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EA0DDA22C7E64E0008EB04 /* Home.swift */; };
+		17EA0DDD22C7E76D0008EB04 /* JSONError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EA0DDC22C7E76D0008EB04 /* JSONError.swift */; };
 		17FF2B8922C4FB5C008276A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FF2B8822C4FB5C008276A9 /* AppDelegate.swift */; };
 		17FF2B8B22C4FB5C008276A9 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FF2B8A22C4FB5C008276A9 /* HomeController.swift */; };
 		17FF2B9022C4FB5D008276A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17FF2B8F22C4FB5D008276A9 /* Assets.xcassets */; };
@@ -33,6 +35,8 @@
 		1780399322C5780E0096DCA6 /* HomeDatasourceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDatasourceController.swift; sourceTree = "<group>"; };
 		17A1103422C68E7D00EB63CC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		17A2FF4822C56903008D8A9F /* WordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCell.swift; sourceTree = "<group>"; };
+		17EA0DDA22C7E64E0008EB04 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		17EA0DDC22C7E76D0008EB04 /* JSONError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONError.swift; sourceTree = "<group>"; };
 		17FF2B8522C4FB5C008276A9 /* TwitterClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17FF2B8822C4FB5C008276A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17FF2B8A22C4FB5C008276A9 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
@@ -150,6 +154,8 @@
 			isa = PBXGroup;
 			children = (
 				17102C0222C5DEC700A2AE86 /* HomeDatasource.swift */,
+				17EA0DDA22C7E64E0008EB04 /* Home.swift */,
+				17EA0DDC22C7E76D0008EB04 /* JSONError.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -291,13 +297,19 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-TwitterClone/Pods-TwitterClone-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/LBTAComponents/LBTAComponents.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/TRON/TRON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LBTAComponents.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TRON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -319,8 +331,10 @@
 				17A1103522C68E7D00EB63CC /* User.swift in Sources */,
 				17FF2B8B22C4FB5C008276A9 /* HomeController.swift in Sources */,
 				1700F46022C7AA3600CEE0DA /* TweetCell.swift in Sources */,
+				17EA0DDD22C7E76D0008EB04 /* JSONError.swift in Sources */,
 				17FF2B8922C4FB5C008276A9 /* AppDelegate.swift in Sources */,
 				17102C0722C5E1EA00A2AE86 /* UserHeader.swift in Sources */,
+				17EA0DDB22C7E64E0008EB04 /* Home.swift in Sources */,
 				1700F46222C7B58F00CEE0DA /* Tweet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
