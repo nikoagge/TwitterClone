@@ -33,9 +33,9 @@ class Home: JSONDecodable {
             let username = userJSON["username"].stringValue
             let bio = userJSON["bio"].stringValue
             
-            let user = User(name: name, username: username, bioText: bio, profileImage: UIImage())
+            //let user = User(name: name, username: username, bioText: bio, profileImage: UIImage())
             
-            users.append(user)
+            //users.append(user)
         }
         
         self.users = users

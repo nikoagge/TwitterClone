@@ -27,40 +27,34 @@ class HomeDatasource: Datasource, JSONDecodable {
 //        return [brianUser, rayUser]
 //    }()
     let users: [User]
+    let tweets: [Tweet]
     
     
     required init(json: JSON) throws {
         
         print("Now ready to parse JSON: \n", json)
         
-        var users = [User]()
+        //var users = [User]()
         
-        let array = json["users"].array
+        let usersJSONArray = json["users"].array
         
-        for userJSON in array! {
-            
-            let name = userJSON["name"].stringValue
-            let username = userJSON["username"].stringValue
-            let bio = userJSON["bio"].stringValue
-            
-            let user = User(name: name, username: username, bioText: bio, profileImage: UIImage())
-            
-            users.append(user)
-        }
+        self.users = usersJSONArray!.map{return User(withJSON: $0)}
         
-        self.users = users
+        let tweetsJSONArray = json["tweets"].array
+        
+        self.tweets = tweetsJSONArray!.map{return Tweet(withJSON: $0)}
     }
-    
-    let tweets: [Tweet] = {
-        
-        let brianUser = User(name: "Brian", username: "@brianaccount", bioText: "A simple bio text for user Brian.", profileImage: #imageLiteral(resourceName: "profile_image"))
-        
-        let brianTweet = Tweet(user: brianUser, message: "Welcome to my account. Here you can find tutorials, useful advice about iOS programming and many more. Feel free to ask me anything you want!")
-        let anotherBrianTweet = Tweet(user: brianUser, message: "Here is another tweet of me, Brian. Happy to here from you really soon...")
-        
-        
-        return [brianTweet, anotherBrianTweet]
-    }()
+//
+//    let tweets: [Tweet] = {
+//
+//        let brianUser = User(name: "Brian", username: "@brianaccount", bioText: "A simple bio text for user Brian.", profileImage: #imageLiteral(resourceName: "profile_image"))
+//
+//        let brianTweet = Tweet(user: brianUser, message: "Welcome to my account. Here you can find tutorials, useful advice about iOS programming and many more. Feel free to ask me anything you want!")
+//        let anotherBrianTweet = Tweet(user: brianUser, message: "Here is another tweet of me, Brian. Happy to here from you really soon...")
+//
+//
+//        return [brianTweet, anotherBrianTweet]
+//    }()
     
     
     override func numberOfSections() -> Int {
